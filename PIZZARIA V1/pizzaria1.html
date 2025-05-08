@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="pizzaria1.css" />
+  <title>FRANCO PIZZA'S</title>
+</head>
+<body>
+  <div class="container">
+    <h1>FRANCO PIZZA'S</h1>
+
+    <div class="menu">
+      <button onclick="mostrarSecao('cardapio')">Cardápio de Pizza</button>
+      <button onclick="mostrarSecao('promocao')">Consultar Promoções</button>
+      <button onclick="mostrarSecao('acompanhar')">Acompanhamentos do Pedido</button>
+      <button onclick="mostrarSecao('carrinho')">Carrinho de Pizza</button>
+      <button onclick="mostrarSecao('pagamento')">Pagar Pedido</button>
+    </div>
+
+    <div id="cardapio" class="hidden">
+      <h2>Escolha sua Pizza</h2>
+      <select id="pizza">
+        <option value="Calabresa - R$59.90">Calabresa - R$59,90</option>
+        <option value="Frango com Catupiry - R$59.90">Frango com Catupiry - R$59,90</option>
+        <option value="Portuguesa - R$59.90">Portuguesa - R$59,90</option>
+      </select>
+      <button onclick="adicionarPizza()">Adicionar ao Carrinho</button>
+    </div>
+
+    <div id="promocao" class="hidden">
+      <h2>Promoções</h2>
+      <p>2 Pizzas Grandes + 2L de Refri por R$ 99,90</p>
+      <p>Pizza Média + Bordas Recheadas por R$ 54,90</p>
+    </div>
+
+    <div id="acompanhar" class="hidden">
+        <h2>Acompanhamentos</h2>
+        <select id="acompanhamento">
+          <option value="Refri Coca Cola - R$10.00">Refri Coca Cola - R$10,00</option>
+          <option value="Refri Xereta - R$8.00">Refri Xereta - R$8,00</option>
+          <option value="Refri Pepsi - R$10.00">Refri Pepsi - R$10,00</option>
+        </select>
+        <button onclick="adicionarAcompanhamento()">Adicionar ao Carrinho</button>
+      </div>
+      
+
+    <div id="carrinho" class="hidden">
+      <h2>Seu Carrinho</h2>
+      <ul id="lista-carrinho"></ul>
+    </div>
+
+    <div id="pagamento" class="hidden">
+        <h2>Formas de Pagamento</h2>
+        <form id="form-pagamento">
+          <label><input type="radio" name="pagamento" value="PIX"> PIX</label><br>
+          <label><input type="radio" name="pagamento" value="Cartão de Crédito/Débito"> Cartão de Crédito/Débito</label><br>
+          <label><input type="radio" name="pagamento" value="Dinheiro"> Dinheiro</label><br>
+          <button type="button" onclick="confirmarPagamento()">Confirmar Pagamento</button>
+          <p id="metodo-pagamento" style="margin-top: 15px; font-weight: bold; color: green;"></p>
+        </form>
+      </div>      
+  </div>
+
+  <script src="pizzaria1.js"></script>
+</body>
+</html>
