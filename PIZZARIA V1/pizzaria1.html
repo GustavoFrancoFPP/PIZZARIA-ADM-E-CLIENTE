@@ -4,18 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="pizzaria1.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <title>FRANCO PIZZA'S</title>
 </head>
 <body>
   <div class="container">
     <h1>FRANCO PIZZA'S</h1>
-
+    
     <div class="menu">
-      <button onclick="mostrarSecao('cardapio')">Cardápio de Pizza</button>
-      <button onclick="mostrarSecao('promocao')">Consultar Promoções</button>
-      <button onclick="mostrarSecao('acompanhar')">Acompanhamentos do Pedido</button>
-      <button onclick="mostrarSecao('carrinho')">Carrinho de Pizza</button>
-      <button onclick="mostrarSecao('pagamento')">Pagar Pedido</button>
+      <button onclick="mostrarSecao('cardapio')">
+      Cardápio de Pizzas <i class="fas fa-pizza-slice"></i>
+      </button>
+      <button onclick="mostrarSecao('promocao')">
+        Consultar Promoções <i class="fas fa-tags"></i>
+      </button>
+      <button onclick="mostrarSecao('acompanhar')">
+        Acompanhamentos do Pedido <i class="fas fa-box-open"></i>
+      </button>
+      <button onclick="mostrarSecao('carrinho')">
+        Carrinho de Pizza <i class="fas fa-shopping-cart"></i>
+      </button>
+      <button onclick="mostrarSecao('pagamento')">
+      Pagar Pedido <i class="fas fa-credit-card"></i>
+      </button>
+      <button onclick="consultarPedido()">
+      Consultar Pedido <i class="fas fa-receipt"></i>
+</button>
+
     </div>
 
     <div id="cardapio" class="hidden">
@@ -59,7 +74,19 @@
           <button type="button" onclick="confirmarPagamento()">Confirmar Pagamento</button>
           <p id="metodo-pagamento" style="margin-top: 15px; font-weight: bold; color: green;"></p>
         </form>
-      </div>      
+      </div> 
+      
+      <div id="consulta-pedido" class="hidden">
+  <h2>Resumo do Pedido</h2>
+  <ul id="resumo-pedido"></ul>
+  <p id="resumo-pagamento" style="margin-top: 15px; font-weight: bold; color: green;"></p>
+</div>
+    
+    
+       <div
+        class="logoimg">
+
+     </div>
   </div>
 
   <script src="pizzaria1.js"></script>
