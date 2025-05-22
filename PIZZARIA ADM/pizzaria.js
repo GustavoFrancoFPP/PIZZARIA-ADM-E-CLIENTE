@@ -48,9 +48,9 @@ function adicionarPizza() {
     document.getElementById("ingredientes").value = "";
     document.getElementById("preco").value = "";
     atualizarLista();
-    alert("Pizza adicionada com sucesso!");
+    exibirMensagem("Pizza adicionada com sucesso!");
   } else {
-    alert("Por favor, preencha todos os campos corretamente.");
+    exibirMensagem("Por favor, preencha todos os campos corretamente.");
   }
 }
 
@@ -89,15 +89,15 @@ function alterarPizza() {
       pizzaParaAlterar.preco = novoPreco;
 
       atualizarLista();
-      alert("Pizza alterada com sucesso!");
+      exibirMensagem("Pizza alterada com sucesso!");
       document.getElementById("form-alterar").classList.add("hidden");
       document.getElementById("busca-alterar").value = "";
       pizzaParaAlterar = null;
     } else {
-      alert("Por favor, preencha todos os campos corretamente.");
+      exibirMensagem("Por favor, preencha todos os campos corretamente.");
     }
   } else {
-    alert("Nenhuma pizza selecionada para alteração.");
+    exibirMensagem("Nenhuma pizza selecionada para alteração.");
   }
 }
 
@@ -137,14 +137,14 @@ function registrarVenda() {
     document.getElementById("venda-preco").value = "";
     document.getElementById("venda-cliente").value = "";
   } else {
-    alert("Por favor, preencha todos os campos corretamente!");
+    exibirMensagem("Por favor, preencha todos os campos corretamente!");
   }
 }
 
 // Gera Relatório de Vendas
 function gerarRelatorioVendas() {
   if (vendas.length === 0) {
-    alert("Nenhuma venda registrada.");
+    exibirMensagem("Nenhuma venda registrada.");
     return;
   }
 
