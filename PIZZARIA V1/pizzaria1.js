@@ -76,10 +76,10 @@ function confirmarPagamento() {
 
   if (metodoSelecionado) {
     mensagem.textContent = `Pagamento realizado com sucesso via ${metodoSelecionado}. Obrigado pelo seu pedido!`;
-    alert(`Pagamento confirmado via ${metodoSelecionado}!`);
+    mostrarMensagem(`Pagamento confirmado via ${metodoSelecionado}!`);
     mostrarSecao("carrinho");
   } else {
-    alert("Por favor, selecione uma forma de pagamento.");
+    mostrarMensagem("Por favor, selecione uma forma de pagamento.");
   }
 }
 
@@ -123,7 +123,6 @@ function consultarPedido() {
       li.textContent = item;
       listaResumo.appendChild(li);
 
-      // Extrair o valor do item (ex: "Pizza - R$59,90")
       const match = item.match(/R\$ ?(\d+,\d{2})/);
       if (match && match[1]) {
         const preco = parseFloat(match[1].replace(",", "."));
@@ -132,7 +131,6 @@ function consultarPedido() {
     });
   }
 
-  // Forma de pagamento selecionada
   const formas = document.getElementsByName("pagamento");
   let metodoSelecionado = "";
 
@@ -142,7 +140,6 @@ function consultarPedido() {
     }
   });
 
-  // Atualiza a exibição da forma de pagamento + total
   pagamentoResumo.innerHTML = `
     ${metodoSelecionado ? `Forma de pagamento: ${metodoSelecionado}<br>` : ""}
     <strong>Total do pedido: R$ ${total.toFixed(2).replace(".", ",")}</strong>

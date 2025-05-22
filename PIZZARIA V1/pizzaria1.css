@@ -9,20 +9,21 @@ body {
     linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url('https://cdn.pixabay.com/photo/2021/12/30/11/33/italian-cuisine-6903774_1280.jpg') no-repeat center center fixed;
   background-size: cover;
-  height: 100vh;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 /* Container central com fundo semi-transparente para destacar conteúdo */
 .container {
   max-width: 900px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.95);
   margin: 40px auto;
-  padding: 30px;
+  padding: 30px 25px;
   border-radius: 15px;
-  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
-  color: #333; /* texto escuro dentro do container */
+  box-shadow: 0 0 30px rgba(255, 87, 34, 0.4);
+  color: #333;
+  box-sizing: border-box;
 }
-
 
 /* Logo */
 .logo {
@@ -37,88 +38,169 @@ body {
   background-position: center;
   width: 180px;
   height: 180px;
-  margin: 0 auto;
+  margin: 0 auto 30px;
 }
 
 /* Título */
 h1 {
   text-align: center;
   color: #d32f2f;
-  text-shadow: 2px 2px #ffd600;
+  text-shadow: 2px 2px 4px #ffd600;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  font-weight: 800;
+  font-size: 2.5rem;
 }
 
 /* Menu superior */
 .menu {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap;         /* permite quebra em múltiplas linhas */
   justify-content: center;
-  margin-bottom: 30px;
-  gap: 10px;
+  gap: 12px;               /* espaço entre botões */
+  margin-bottom: 40px;
+  padding: 0 12px;
+  overflow: visible;       /* evita scroll horizontal */
 }
 
+/* Botões do menu */
 .menu button {
-  background-color: #ffd600;
-  border: 2px solid #d32f2f;
+  background: linear-gradient(135deg, #ffca28, #f57c00);
+  border: none;
   padding: 12px 20px;
-  border-radius: 12px;
-  font-weight: bold;
+  border-radius: 30px;
+  font-weight: 700;
+  color: #4e342e;
   cursor: pointer;
-  color: #d32f2f;
-  transition: all 0.3s;
+  transition: 
+    background 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
   display: flex;
   align-items: center;
   gap: 8px;
+  white-space: nowrap;
+  box-shadow: 0 4px 8px rgba(245, 124, 0, 0.4);
+  user-select: none;
+  font-size: 1rem;
+  min-width: max-content;
+  flex-shrink: 0;
+  flex-grow: 0;
+  max-width: 100%;
+}
+
+.menu button i {
+  font-size: 18px;
+  color: #bf360c;
+  transition: color 0.3s ease;
 }
 
 .menu button:hover {
-  background-color: #ffc107;
-  transform: scale(1.05);
+  background: linear-gradient(135deg, #f57c00, #ef6c00);
+  color: #fff3e0;
+  box-shadow: 0 6px 15px rgba(245, 124, 0, 0.75);
+  transform: translateY(-3px) scale(1.05);
+}
+
+.menu button:hover i {
+  color: #fff8e1;
 }
 
 /* Seções */
-#cardapio, #promocao, #acompanhar, #carrinho, #pagamento {
+#cardapio, #promocao, #acompanhar, #carrinho, #pagamento, #consulta-pedido {
   background-color: #fffde7;
-  padding: 20px;
+  padding: 20px 25px;
   border-radius: 15px;
-  box-shadow: 0 0 12px rgba(255, 193, 7, 0.4);
+  box-shadow: 0 0 15px rgba(255, 193, 7, 0.4);
   margin-bottom: 25px;
+  color: #3e2723;
+  box-sizing: border-box;
 }
 
-/* Ícones */
+/* Ícones em botões */
 button i {
   font-size: 18px;
 }
 
 /* Inputs e botões internos */
-select, input, button {
+select, input[type="text"], input[type="password"], button {
   margin-top: 10px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
   width: 100%;
   box-sizing: border-box;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
 }
 
-/* Tabela */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 15px;
+select:focus, input:focus {
+  border-color: #f57c00;
+  outline: none;
 }
 
-th, td {
-  border: 1px solid #ccc;
-  padding: 8px;
-  text-align: left;
+/* Lista do carrinho e resumo do pedido */
+ul {
+  padding-left: 20px;
 }
 
-th {
-  background-color: #ffd600;
-  color: #d32f2f;
+li {
+  margin-bottom: 6px;
+  font-weight: 600;
 }
 
+/* Labels de pagamento */
+form#form-pagamento label {
+  display: block;
+  margin: 8px 0;
+  font-weight: 600;
+  cursor: pointer;
+  color: #5d4037;
+}
+
+form#form-pagamento input[type="radio"] {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+/* Mensagens dinâmicas */
+.mensagem {
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-align: center;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  transition: opacity 0.4s ease;
+}
+
+.mensagem.sucesso {
+  background-color: #4caf50;
+  color: #e8f5e9;
+  box-shadow: 0 0 10px #4caf50aa;
+}
+
+.mensagem.erro {
+  background-color: #e53935;
+  color: #ffebee;
+  box-shadow: 0 0 10px #e53935aa;
+}
+
+/* Classe para esconder seções */
 .hidden {
   display: none;
+}
+
+/* Responsividade básica */
+@media (max-width: 500px) {
+  .menu button {
+    flex: 1 1 100%;
+    font-size: 1rem;
+    justify-content: center;
+  }
 }
