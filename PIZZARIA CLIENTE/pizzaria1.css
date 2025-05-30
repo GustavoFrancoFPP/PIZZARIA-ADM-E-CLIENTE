@@ -1,206 +1,236 @@
-/* Fundo geral */
-body {
+/* Reset básico */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #fff;
-  /* Fundo com overlay escuro para melhor contraste */
-  background: 
-    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('https://cdn.pixabay.com/photo/2021/12/30/11/33/italian-cuisine-6903774_1280.jpg') no-repeat center center fixed;
+}
+
+body {
+  background: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
   background-size: cover;
-  min-height: 100vh;
-  box-sizing: border-box;
-}
-
-/* Container central com fundo semi-transparente para destacar conteúdo */
-.container {
-  max-width: 900px;
-  background-color: rgba(255, 255, 255, 0.95);
-  margin: 40px auto;
-  padding: 30px 25px;
-  border-radius: 15px;
-  box-shadow: 0 0 30px rgba(255, 87, 34, 0.4);
   color: #333;
-  box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
 }
 
-/* Logo */
-.logo {
-  text-align: center;
-  margin-bottom: 20px;
+/* Container principal */
+.container {
+  background: rgba(255, 255, 255, 0.95);
+  width: 960px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+  padding: 25px 30px;
 }
 
-.logoimg {
-  background-image: url('https://i.imgur.com/3vIe1bV.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 180px;
-  height: 180px;
-  margin: 0 auto 30px;
-}
-
-/* Título */
+/* Título principal */
 h1 {
+  color: #d62828;
   text-align: center;
-  color: #d32f2f;
-  text-shadow: 2px 2px 4px #ffd600;
-  margin-top: 20px;
   margin-bottom: 30px;
-  font-weight: 800;
-  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 2px #ffc300;
 }
 
-/* Menu superior */
+/* Menu de navegação */
 .menu {
   display: flex;
-  flex-wrap: wrap;         /* permite quebra em múltiplas linhas */
-  justify-content: center;
-  gap: 12px;               /* espaço entre botões */
-  margin-bottom: 40px;
-  padding: 0 12px;
-  overflow: visible;       /* evita scroll horizontal */
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
 }
 
-/* Botões do menu */
 .menu button {
-  background: linear-gradient(135deg, #ffca28, #f57c00);
+  background-color: #ffc300;
   border: none;
-  padding: 12px 20px;
-  border-radius: 30px;
+  padding: 12px 18px;
+  border-radius: 6px;
+  color: #8b0000;
   font-weight: 700;
-  color: #4e342e;
+  font-size: 14px;
   cursor: pointer;
-  transition: 
-    background 0.3s ease,
-    color 0.3s ease,
-    box-shadow 0.3s ease,
-    transform 0.2s ease;
   display: flex;
   align-items: center;
   gap: 8px;
-  white-space: nowrap;
-  box-shadow: 0 4px 8px rgba(245, 124, 0, 0.4);
-  user-select: none;
-  font-size: 1rem;
-  min-width: max-content;
-  flex-shrink: 0;
-  flex-grow: 0;
-  max-width: 100%;
+  box-shadow: 0 3px 0 #b27a00;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .menu button i {
   font-size: 18px;
-  color: #bf360c;
-  transition: color 0.3s ease;
 }
 
 .menu button:hover {
-  background: linear-gradient(135deg, #f57c00, #ef6c00);
-  color: #fff3e0;
-  box-shadow: 0 6px 15px rgba(245, 124, 0, 0.75);
-  transform: translateY(-3px) scale(1.05);
+  background-color: #d9a100;
+  box-shadow: none;
 }
 
-.menu button:hover i {
-  color: #fff8e1;
+/* Títulos de seções */
+h2, h3 {
+  color: #d62828;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #ffc300;
+  padding-bottom: 6px;
+  font-weight: 800;
 }
 
-/* Seções */
-#cardapio, #promocao, #acompanhar, #carrinho, #pagamento, #consulta-pedido {
-  background-color: #fffde7;
-  padding: 20px 25px;
-  border-radius: 15px;
-  box-shadow: 0 0 15px rgba(255, 193, 7, 0.4);
-  margin-bottom: 25px;
-  color: #3e2723;
-  box-sizing: border-box;
-}
-
-/* Ícones em botões */
-button i {
-  font-size: 18px;
-}
-
-/* Inputs e botões internos */
-select, input[type="text"], input[type="password"], button {
-  margin-top: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  width: 100%;
-  box-sizing: border-box;
-  font-size: 1rem;
-  font-family: inherit;
-  transition: border-color 0.3s ease;
-}
-
-select:focus, input:focus {
-  border-color: #f57c00;
-  outline: none;
-}
-
-/* Lista do carrinho e resumo do pedido */
-ul {
-  padding-left: 20px;
-}
-
-li {
+/* Labels e inputs */
+label {
+  display: block;
   margin-bottom: 6px;
   font-weight: 600;
+  color: #8b0000;
 }
 
-/* Labels de pagamento */
-form#form-pagamento label {
-  display: block;
-  margin: 8px 0;
-  font-weight: 600;
-  cursor: pointer;
-  color: #5d4037;
+input[type="text"],
+input[type="number"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 2px solid #ffc300;
+  font-size: 14px;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
-form#form-pagamento input[type="radio"] {
-  margin-right: 8px;
-  cursor: pointer;
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #d62828;
+  background-color: #fff5cc;
 }
 
-/* Mensagens dinâmicas */
-.mensagem {
-  padding: 15px 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
+/* Botões genéricos */
+button {
+  background-color: #d62828;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 7px;
   font-weight: 700;
-  text-align: center;
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  box-sizing: border-box;
-  transition: opacity 0.4s ease;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #a02121;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.mensagem.sucesso {
-  background-color: #4caf50;
-  color: #e8f5e9;
-  box-shadow: 0 0 10px #4caf50aa;
+button:hover {
+  background-color: #a02121;
+  box-shadow: none;
 }
 
-.mensagem.erro {
-  background-color: #e53935;
-  color: #ffebee;
-  box-shadow: 0 0 10px #e53935aa;
+/* Tabelas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  font-size: 14px;
 }
 
-/* Classe para esconder seções */
-.hidden {
-  display: none;
+thead tr {
+  background-color: #d62828;
+  color: #fff;
 }
 
-/* Responsividade básica */
-@media (max-width: 500px) {
+th, td {
+  border: 1px solid #ffc300;
+  padding: 8px 10px;
+  text-align: left;
+}
+
+/* Lista de vendas/pedidos */
+#lista-vendas {
+  margin-top: 15px;
+  list-style: none;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ffc300;
+  padding: 10px;
+  border-radius: 7px;
+  background: #fff5cc;
+}
+
+#lista-vendas li {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #8b0000;
+}
+
+/* Formulário de alteração */
+form#form-alterar {
+  margin-top: 15px;
+  background: #fff5cc;
+  padding: 15px;
+  border-radius: 8px;
+  border: 2px solid #d62828;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .container {
+    width: 90%;
+  }
+  .menu {
+    flex-direction: column;
+    align-items: stretch;
+  }
   .menu button {
-    flex: 1 1 100%;
-    font-size: 1rem;
     justify-content: center;
   }
+}
+
+/* Scroll para tabelas longas */
+tbody {
+  max-height: 300px;
+  overflow-y: auto;
+  display: block;
+}
+
+tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+thead, tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* Mensagens */
+.mensagem {
+  padding: 10px 20px;
+  margin: 15px 0;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 1rem;
+  max-width: 400px;
+  text-align: center;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sucesso {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.erro {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
 }

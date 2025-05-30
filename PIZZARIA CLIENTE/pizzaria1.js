@@ -123,3 +123,9 @@ function atualizarCarrinho() {
     lista.appendChild(li);
   });
 }
+
+function mostrarLogin() {
+  setTimeout(() => {
+            window.location.href = "login.html";
+        }, 0);
+}
