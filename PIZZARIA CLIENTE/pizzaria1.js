@@ -9,11 +9,22 @@ function exibirMensagem(texto, tipo) {
     }, 5000);
 }
 
+function exibirMensagem(texto, tipo) {
+    const mensagem = document.getElementById("mensagem");
+    mensagem.textContent = texto;
+    mensagem.className = `mensagem ${tipo}`;
+    mensagem.classList.remove("hidden");
+
+    setTimeout(() => {
+        mensagem.classList.add("hidden");
+    }, 5000);
+}
+
 function validarLogin() {
     const usuario = document.getElementById("usuario").value;
     const senha = document.getElementById("senha").value;
 
-    const  usuarioCorreto = "cliente";
+    const usuarioCorreto = "cliente";
     const senhaCorreta = "cliente";
 
     if (usuario === usuarioCorreto && senha === senhaCorreta) {
@@ -25,6 +36,25 @@ function validarLogin() {
         exibirMensagem("Usuário ou senha incorretos.", "erro");
     }
 }
+
+function fazerCadastro() {
+    const usuario = document.getElementById("usuario").value;
+    const nome = document.getElementById("nome").value;
+    const email = document.getElementById("email").value;
+    const telefone = document.getElementById("telefone").value;
+    const senha = document.getElementById("senha").value;
+
+    if (!usuario || !nome || !email || !telefone || !senha) {
+        exibirMensagem("Por favor, preencha todos os campos.", "erro");
+        return;
+    }
+
+    exibirMensagem("Cadastro realizado com sucesso!", "sucesso");
+    setTimeout(() => {
+        window.location.href = "pizzaria1.html";
+    }, 3000);
+}
+
 
 let carrinho = [];
 
@@ -92,56 +122,4 @@ function atualizarCarrinho() {
     li.textContent = item;
     lista.appendChild(li);
   });
-}
-
-function mostrarMensagem(mensagem) {
-  const mensagemBox = document.createElement("div");
-  mensagemBox.textContent = mensagem;
-  mensagemBox.style.backgroundColor = "#d4a300";
-  mensagemBox.style.padding = "10px";
-  mensagemBox.style.borderRadius = "5px";
-  mensagemBox.style.color = "#fff";
-  mensagemBox.style.marginTop = "10px";
-  document.body.appendChild(mensagemBox);
-
-}
-
-function consultarPedido() {
-  mostrarSecao("consulta-pedido");
-
-  const listaResumo = document.getElementById("resumo-pedido");
-  const pagamentoResumo = document.getElementById("resumo-pagamento");
-
-  listaResumo.innerHTML = "";
-  let total = 0;
-
-  if (carrinho.length === 0) {
-    listaResumo.innerHTML = "<li>Nenhum item no carrinho.</li>";
-  } else {
-    carrinho.forEach(item => {
-      const li = document.createElement("li");
-      li.textContent = item;
-      listaResumo.appendChild(li);
-
-      const match = item.match(/R\$ ?(\d+,\d{2})/);
-      if (match && match[1]) {
-        const preco = parseFloat(match[1].replace(",", "."));
-        total += preco;
-      }
-    });
-  }
-
-  const formas = document.getElementsByName("pagamento");
-  let metodoSelecionado = "";
-
-  formas.forEach((opcao) => {
-    if (opcao.checked) {
-      metodoSelecionado = opcao.value;
-    }
-  });
-
-  pagamentoResumo.innerHTML = `
-    ${metodoSelecionado ? `Forma de pagamento: ${metodoSelecionado}<br>` : ""}
-    <strong>Total do pedido: R$ ${total.toFixed(2).replace(".", ",")}</strong>
-  `;
 }

@@ -117,7 +117,7 @@ function atualizarLista(lista = cardapio) {
   });
 }
 
-// Registro de Vendas
+// Relatorio de Vendas
 let vendas = [];
 
 function registrarVenda() {
@@ -141,7 +141,21 @@ function registrarVenda() {
   }
 }
 
-// Gera Relatório de Vendas
+function mostrarMensagem(texto, tipo) {
+  const mensagem = document.createElement('div');
+  mensagem.classList.add('mensagem', tipo);
+  mensagem.textContent = texto;
+
+  document.body.appendChild(mensagem);
+  window.getComputedStyle(mensagem).opacity;
+  setTimeout(() => {
+    mensagem.style.opacity = '0';
+  }, 4000);
+  setTimeout(() => {
+    mensagem.remove();
+  }, 4500);
+}
+
 function gerarRelatorioVendas() {
   if (vendas.length === 0) {
     exibirMensagem("Nenhuma venda registrada.");
@@ -177,3 +191,4 @@ function gerarRelatorioVendas() {
 // Inicializa exibindo a tela de cadastro
 mostrarSecao("cadastro");
 atualizarLista();
+
