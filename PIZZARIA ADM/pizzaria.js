@@ -1,53 +1,53 @@
 function exibirMensagem(texto, tipo) {
-    const mensagem = document.getElementById("mensagem");
-    mensagem.textContent = texto;
-    mensagem.className = `mensagem ${tipo}`;
-    mensagem.classList.remove("hidden");
+  const mensagem = document.getElementById("mensagem");
+  mensagem.textContent = texto;
+  mensagem.className = `mensagem ${tipo}`;
+  mensagem.classList.remove("hidden");
 
-    setTimeout(() => {
-        mensagem.classList.add("hidden");
-    }, 5000);
+  setTimeout(() => {
+    mensagem.classList.add("hidden");
+  }, 5000);
 }
 
 function validarLogin() {
-    const usuario = document.getElementById("usuario").value;
-    const senha = document.getElementById("senha").value;
+  const usuario = document.getElementById("usuario").value;
+  const senha = document.getElementById("senha").value;
 
-    const  usuarioCorreto = "admin";
-    const senhaCorreta = "12345";
+  const usuarioCorreto = "admin";
+  const senhaCorreta = "12345";
 
-    if (usuario === usuarioCorreto && senha === senhaCorreta) {
-        exibirMensagem("Login realizado com sucesso!", "sucesso");
-        setTimeout(() => {
-            window.location.href = "pizzaria.html";
-        }, 3000);
-    } else {
-        exibirMensagem("Usuário ou senha incorretos.", "erro");
-    }
+  if (usuario === usuarioCorreto && senha === senhaCorreta) {
+    exibirMensagem("Login realizado com sucesso!", "sucesso");
+    setTimeout(() => {
+      window.location.href = "pizzaria.html";
+    }, 3000);
+  } else {
+    exibirMensagem("Usuário ou senha incorretos.", "erro");
+  }
 }
 
 let cardapio = [];
-let pizzaParaAlterar = null;
+let pizzaSelecionadaParaAlteracao = null;
 
 // Mostra a seção e esconde as outras
-function mostrarSecao(secao) {
-  const secoes = ["cadastro", "consulta", "alterar", "pedido", "venda", "relatorio-vendas"];
-  secoes.forEach(s => document.getElementById(s).classList.add("hidden"));
-  document.getElementById(secao).classList.remove("hidden");
+function mostrarSecao(secaoId) {
+  const todasAsSecoes = ["cadastro", "consulta", "alterar", "pedido", "venda", "relatorio-vendas"];
+  todasAsSecoes.forEach(secao => document.getElementById(secao).classList.add("hidden"));
+  document.getElementById(secaoId).classList.remove("hidden");
 }
 
 // Cadastro de Pizza
 function adicionarPizza() {
-  const nome = document.getElementById("nome").value;
-  const ingredientes = document.getElementById("ingredientes").value;
-  const preco = parseFloat(document.getElementById("preco").value);
+  const nomePizza = document.getElementById("nome").value;
+  const ingredientesPizza = document.getElementById("ingredientes").value;
+  const precoPizza = parseFloat(document.getElementById("preco").value);
 
-  if (nome && ingredientes && preco) {
-    cardapio.push({ nome, ingredientes, preco });
+  if (nomePizza && ingredientesPizza && precoPizza) {
+    cardapio.push({ nome: nomePizza, ingredientes: ingredientesPizza, preco: precoPizza });
     document.getElementById("nome").value = "";
     document.getElementById("ingredientes").value = "";
     document.getElementById("preco").value = "";
-    atualizarLista();
+    atualizarListaDePizzas();
     exibirMensagem("Pizza adicionada com sucesso!");
   } else {
     exibirMensagem("Por favor, preencha todos os campos corretamente.");
@@ -56,21 +56,21 @@ function adicionarPizza() {
 
 // Consulta de Pizzas
 function buscarPizza() {
-  const termo = document.getElementById("busca").value.toLowerCase();
-  const resultados = cardapio.filter(p => p.nome.toLowerCase().includes(termo));
-  atualizarLista(resultados);
+  const termoBusca = document.getElementById("busca").value.toLowerCase();
+  const pizzasEncontradas = cardapio.filter(pizza => pizza.nome.toLowerCase().includes(termoBusca));
+  atualizarListaDePizzas(pizzasEncontradas);
 }
 
 // Prepara formulário para alterar pizza
 function buscarPizzaParaAlterar() {
-  const termo = document.getElementById("busca-alterar").value.toLowerCase();
-  pizzaParaAlterar = cardapio.find(p => p.nome.toLowerCase().includes(termo));
+  const termoBuscaAlteracao = document.getElementById("busca-alterar").value.toLowerCase();
+  pizzaSelecionadaParaAlteracao = cardapio.find(pizza => pizza.nome.toLowerCase().includes(termoBuscaAlteracao));
 
-  if (pizzaParaAlterar) {
+  if (pizzaSelecionadaParaAlteracao) {
     document.getElementById("form-alterar").classList.remove("hidden");
-    document.getElementById("novo-nome").value = pizzaParaAlterar.nome;
-    document.getElementById("novos-ingredientes").value = pizzaParaAlterar.ingredientes;
-    document.getElementById("novo-preco").value = pizzaParaAlterar.preco;
+    document.getElementById("novo-nome").value = pizzaSelecionadaParaAlteracao.nome;
+    document.getElementById("novos-ingredientes").value = pizzaSelecionadaParaAlteracao.ingredientes;
+    document.getElementById("novo-preco").value = pizzaSelecionadaParaAlteracao.preco;
   } else {
     document.getElementById("form-alterar").classList.add("hidden");
   }
@@ -78,21 +78,21 @@ function buscarPizzaParaAlterar() {
 
 // Alteração de Pizza
 function alterarPizza() {
-  if (pizzaParaAlterar) {
+  if (pizzaSelecionadaParaAlteracao) {
     const novoNome = document.getElementById("novo-nome").value;
     const novosIngredientes = document.getElementById("novos-ingredientes").value;
     const novoPreco = parseFloat(document.getElementById("novo-preco").value);
 
     if (novoNome && novosIngredientes && novoPreco) {
-      pizzaParaAlterar.nome = novoNome;
-      pizzaParaAlterar.ingredientes = novosIngredientes;
-      pizzaParaAlterar.preco = novoPreco;
+      pizzaSelecionadaParaAlteracao.nome = novoNome;
+      pizzaSelecionadaParaAlteracao.ingredientes = novosIngredientes;
+      pizzaSelecionadaParaAlteracao.preco = novoPreco;
 
-      atualizarLista();
+      atualizarListaDePizzas();
       exibirMensagem("Pizza alterada com sucesso!");
       document.getElementById("form-alterar").classList.add("hidden");
       document.getElementById("busca-alterar").value = "";
-      pizzaParaAlterar = null;
+      pizzaSelecionadaParaAlteracao = null;
     } else {
       exibirMensagem("Por favor, preencha todos os campos corretamente.");
     }
@@ -102,36 +102,36 @@ function alterarPizza() {
 }
 
 // Atualiza a tabela de consulta
-function atualizarLista(lista = cardapio) {
+function atualizarListaDePizzas(listaAtualizada = cardapio) {
   const tabela = document.getElementById("lista-pizzas");
   tabela.innerHTML = "";
 
-  lista.forEach(p => {
+  listaAtualizada.forEach(pizza => {
     const linha = document.createElement("tr");
     linha.innerHTML = `
-      <td>${p.nome}</td>
-      <td>${p.ingredientes}</td>
-      <td>R$${p.preco.toFixed(2)}</td>
+      <td>${pizza.nome}</td>
+      <td>${pizza.ingredientes}</td>
+      <td>R$${pizza.preco.toFixed(2)}</td>
     `;
     tabela.appendChild(linha);
   });
 }
 
-// Relatorio de Vendas
+// Relatório de Vendas
 let vendas = [];
 
 function registrarVenda() {
-  const nome = document.getElementById("venda-nome").value;
-  const preco = parseFloat(document.getElementById("venda-preco").value);
-  const cliente = document.getElementById("venda-cliente").value;
+  const nomePizzaVendida = document.getElementById("venda-nome").value;
+  const precoVenda = parseFloat(document.getElementById("venda-preco").value);
+  const nomeCliente = document.getElementById("venda-cliente").value;
 
-  if (nome && preco && cliente) {
+  if (nomePizzaVendida && precoVenda && nomeCliente) {
     const listaVendas = document.getElementById("lista-vendas");
     const item = document.createElement("li");
-    item.textContent = `Pizza: ${nome}, Preço: R$${preco.toFixed(2)}, Cliente: ${cliente}`;
+    item.textContent = `Pizza: ${nomePizzaVendida}, Preço: R$${precoVenda.toFixed(2)}, Cliente: ${nomeCliente}`;
     listaVendas.appendChild(item);
 
-    vendas.push({ nome, preco, cliente });
+    vendas.push({ nome: nomePizzaVendida, preco: precoVenda, cliente: nomeCliente });
 
     document.getElementById("venda-nome").value = "";
     document.getElementById("venda-preco").value = "";
@@ -142,17 +142,17 @@ function registrarVenda() {
 }
 
 function mostrarMensagem(texto, tipo) {
-  const mensagem = document.createElement('div');
-  mensagem.classList.add('mensagem', tipo);
-  mensagem.textContent = texto;
+  const mensagemFlutuante = document.createElement('div');
+  mensagemFlutuante.classList.add('mensagem', tipo);
+  mensagemFlutuante.textContent = texto;
 
-  document.body.appendChild(mensagem);
-  window.getComputedStyle(mensagem).opacity;
+  document.body.appendChild(mensagemFlutuante);
+  window.getComputedStyle(mensagemFlutuante).opacity;
   setTimeout(() => {
-    mensagem.style.opacity = '0';
+    mensagemFlutuante.style.opacity = '0';
   }, 4000);
   setTimeout(() => {
-    mensagem.remove();
+    mensagemFlutuante.remove();
   }, 4500);
 }
 
@@ -164,31 +164,30 @@ function gerarRelatorioVendas() {
 
   mostrarSecao("relatorio-vendas");
 
-  const tabelaRel = document.getElementById("tabela-relatorio-vendas");
-  tabelaRel.innerHTML = "";
+  const tabelaRelatorio = document.getElementById("tabela-relatorio-vendas");
+  tabelaRelatorio.innerHTML = "";
 
-  let total = 0;
-  vendas.forEach(v => {
+  let totalVendas = 0;
+  vendas.forEach(venda => {
     const linha = document.createElement("tr");
     linha.innerHTML = `
-      <td>${v.nome}</td>
-      <td>R$${v.preco.toFixed(2)}</td>
-      <td>${v.cliente}</td>
+      <td>${venda.nome}</td>
+      <td>R$${venda.preco.toFixed(2)}</td>
+      <td>${venda.cliente}</td>
     `;
-    tabelaRel.appendChild(linha);
-    total += v.preco;
+    tabelaRelatorio.appendChild(linha);
+    totalVendas += venda.preco;
   });
 
   const linhaTotal = document.createElement("tr");
   linhaTotal.innerHTML = `
     <td><strong>Total</strong></td>
-    <td><strong>R$${total.toFixed(2)}</strong></td>
+    <td><strong>R$${totalVendas.toFixed(2)}</strong></td>
     <td></td>
   `;
-  tabelaRel.appendChild(linhaTotal);
+  tabelaRelatorio.appendChild(linhaTotal);
 }
 
 // Inicializa exibindo a tela de cadastro
 mostrarSecao("cadastro");
-atualizarLista();
-
+atualizarListaDePizzas();
