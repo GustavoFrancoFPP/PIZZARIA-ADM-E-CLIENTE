@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="localizaçao.css">
+    <title>Dados de localização</title>
+</head>
+<body>
+    <div class="container"></div>
+    <h1>FRANCO PIZZA'S</h1>
+    <h2>Insira sua localização onde sua pizza será enviada</h2>
+
+    <div id="form-rua">
+      <div class="form-group">
+        <label for="rua">Rua:</label>
+        <input type="text" id="rua" placeholder="Digite a rua de sua casa" />
+      </div>
+      
+      <div class="form-group">
+        <label for="numero">Número:</label>
+        <input type="number" id="numero" placeholder="Digite o número de sua casa" />
+      </div>
+      
+      <div class="form-group">
+        <label for="bairro">Bairro:</label>
+        <input type="text" id="bairro" placeholder="Digite o bairro" />
+      </div>
+      
+      <div class="form-group">
+        <label for="cidade">Cidade:</label>
+        <input type="text" id="cidade" placeholder="Digite sua Cidade" />
+      </div>
+      
+      <div class="form-group">
+        <label for="cep">CEP:</label>
+        <input type="number" id="cep" placeholder="Digite seu CEP" />
+      </div>
+
+      <button onclick="inserirLocalização()">Confirmar</button>
+      <p id="mensagem" class="mensagem hidden"></p>
+    </div>
+  </div>
+  <script src="pizzaria1.js"></script>
+</body>
+</html>

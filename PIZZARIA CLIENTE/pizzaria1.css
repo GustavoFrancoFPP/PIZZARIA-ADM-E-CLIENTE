@@ -87,6 +87,32 @@ label {
   color: #8b0000;
 }
 
+/* Estilo para o botão limpar carrinho */
+.btn-limpar-carrinho {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 7px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 3px 0 #d32f2f;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-limpar-carrinho:hover {
+  background-color: #d32f2f;
+  box-shadow: none;
+}
+
+.btn-limpar-carrinho i {
+  font-size: 16px;
+}
+
 input[type="text"],
 input[type="number"],
 input[type="password"],

@@ -51,6 +51,28 @@ function fazerCadastro() {
 
     exibirMensagem("Cadastro realizado com sucesso!", "sucesso");
     setTimeout(() => {
+        window.location.href = "localizaçao.html";
+    }, 3000);
+}
+
+function inserirLocalização() {
+    const rua = document.getElementById("rua").value;
+    const numero = document.getElementById("numero").value;
+    const bairro = document.getElementById("bairro").value;
+    const cidade = document.getElementById("cidade").value;
+    const cep = document.getElementById("cep").value;
+
+    if (!rua || !numero || !bairro || !cidade || !cep) {
+        exibirMensagem("Por favor, preencha todos os campos.", "erro");
+        return;
+    }
+    if (cep> 99999999) {
+      exibirMensagem("CEP inserido está incorreto, insira novamente");
+      return;
+    }
+
+    exibirMensagem("Dados inseridos com sucesso!", "sucesso");
+    setTimeout(() => {
         window.location.href = "pizzaria1.html";
     }, 3000);
 }
@@ -67,6 +89,18 @@ function mostrarSecao(secao) {
   });
   const selecionado = document.getElementById(secao);
   if (selecionado) selecionado.classList.remove("hidden");
+}
+
+function limparCarrinho() {
+  if (carrinho.length === 0) {
+    mostrarMensagem("O carrinho já está vazio!", "erro");
+    return;
+  }
+  else {
+    carrinho = [];
+    atualizarCarrinho();
+    mostrarMensagem("Carrinho limpo com sucesso!", "sucesso");
+  }
 }
 
 function adicionarPizza() {
@@ -105,7 +139,7 @@ function confirmarPagamento() {
   const mensagem = document.getElementById("metodo-pagamento");
 
   if (metodoSelecionado) {
-    mensagem.textContent = `Pagamento realizado com sucesso via ${metodoSelecionado}. Obrigado pelo seu pedido!`;
+    mensagem.textContent = `Pagamento realizado com sucesso via ${metodoSelecionado}. Obrigado pelo seu pedido! Você vai ser notificado no seu e-mail e número de telefone com a localização de seu pedido! :)`;
     mostrarMensagem(`Pagamento confirmado via ${metodoSelecionado}!`);
     mostrarSecao("carrinho");
   } else {
