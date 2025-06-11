@@ -17,7 +17,6 @@ body {
   padding: 20px;
 }
 
-/* Container principal */
 .container {
   background: rgba(255, 255, 255, 0.95);
   width: 960px;
@@ -26,9 +25,9 @@ body {
   padding: 25px 30px;
 }
 
-/* Título principal */
+/* Título */
 h1 {
-  color: #d62828;
+  color: #d62828; /* vermelho forte */
   text-align: center;
   margin-bottom: 30px;
   font-weight: 900;
@@ -40,17 +39,17 @@ h1 {
 .menu {
   display: flex;
   justify-content: space-around;
+  margin-bottom: 25px;
   flex-wrap: wrap;
   gap: 10px;
-  margin-bottom: 25px;
 }
 
 .menu button {
-  background-color: #ffc300;
+  background-color: #ffc300; /* amarelo */
   border: none;
   padding: 12px 18px;
   border-radius: 6px;
-  color: #8b0000;
+  color: #8b0000; /* vermelho escuro */
   font-weight: 700;
   font-size: 14px;
   cursor: pointer;
@@ -70,7 +69,11 @@ h1 {
   box-shadow: none;
 }
 
-/* Títulos de seções */
+/* Seções */
+.hidden {
+  display: none;
+}
+
 h2, h3 {
   color: #d62828;
   margin-bottom: 15px;
@@ -79,7 +82,7 @@ h2, h3 {
   font-weight: 800;
 }
 
-/* Labels e inputs */
+/* Labels e Inputs */
 label {
   display: block;
   margin-bottom: 6px;
@@ -87,41 +90,8 @@ label {
   color: #8b0000;
 }
 
-/* Estilo para o botão limpar carrinho */
-.btn-limpar-carrinho {
-  background-color: #f44336;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 7px;
-  font-weight: 700;
-  cursor: pointer;
-  margin-top: 15px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 3px 0 #d32f2f;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.btn-limpar-carrinho:hover {
-  background-color: #d32f2f;
-  box-shadow: none;
-}
-
-.btn-limpar-carrinho i {
-  font-size: 16px;
-}
-
-
-.hidden {
-  display: none;
-} 
-
 input[type="text"],
-input[type="number"],
-input[type="password"],
-select {
+input[type="number"] {
   width: 100%;
   padding: 8px 10px;
   margin-bottom: 15px;
@@ -131,14 +101,14 @@ select {
   transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
-input:focus,
-select:focus {
+input[type="text"]:focus,
+input[type="number"]:focus {
   outline: none;
   border-color: #d62828;
   background-color: #fff5cc;
 }
 
-/* Botões genéricos */
+/* Botões dentro das seções */
 button {
   background-color: #d62828;
   color: #fff;
@@ -175,7 +145,7 @@ th, td {
   text-align: left;
 }
 
-/* Lista de vendas/pedidos */
+/* Lista de vendas */
 #lista-vendas {
   margin-top: 15px;
   list-style: none;
@@ -193,7 +163,7 @@ th, td {
   color: #8b0000;
 }
 
-/* Formulário de alteração */
+/* Form de alteração */
 form#form-alterar {
   margin-top: 15px;
   background: #fff5cc;
@@ -202,7 +172,7 @@ form#form-alterar {
   border: 2px solid #d62828;
 }
 
-/* Responsividade */
+/* Responsividade simples */
 @media (max-width: 1024px) {
   .container {
     width: 90%;
@@ -216,7 +186,7 @@ form#form-alterar {
   }
 }
 
-/* Scroll para tabelas longas */
+/* Scroll para tabela se tiver muitos itens */
 tbody {
   max-height: 300px;
   overflow-y: auto;

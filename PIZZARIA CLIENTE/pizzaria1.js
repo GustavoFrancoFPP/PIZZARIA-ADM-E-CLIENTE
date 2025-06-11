@@ -9,32 +9,21 @@ function exibirMensagem(texto, tipo) {
     }, 5000);
 }
 
-function exibirMensagem(texto, tipo) {
-    const mensagem = document.getElementById("mensagem");
-    mensagem.textContent = texto;
-    mensagem.className = `mensagem ${tipo}`;
-    mensagem.classList.remove("hidden");
-
-    setTimeout(() => {
-        mensagem.classList.add("hidden");
-    }, 5000);
-}
-
 function validarLogin() {
-    const usuario = document.getElementById("usuario").value;
-    const senha = document.getElementById("senha").value;
+  const usuario = document.getElementById("usuario").value;
+  const senha = document.getElementById("senha").value;
 
-    const usuarioCorreto = "cliente";
-    const senhaCorreta = "cliente";
+  const usuarioCorreto = "cliente";
+  const senhaCorreta = "cliente";
 
-    if (usuario === usuarioCorreto && senha === senhaCorreta) {
-        exibirMensagem("Login realizado com sucesso!", "sucesso");
-        setTimeout(() => {
-            window.location.href = "pizzaria1.html";
-        }, 3000);
-    } else {
-        exibirMensagem("Usuário ou senha incorretos.", "erro");
-    }
+  if (usuario === usuarioCorreto && senha === senhaCorreta) {
+    exibirMensagem("Login realizado com sucesso!", "sucesso");
+    setTimeout(() => {
+      window.location.href = "pizzaria1.html";
+    }, 3000);
+  } else {
+    exibirMensagem("Usuário ou senha incorretos.", "erro");
+  }
 }
 
 function fazerCadastro() {
@@ -81,8 +70,7 @@ function inserirLocalização() {
 let carrinho = [];
 
 function mostrarSecao(secao) {
-  const secoes = ["cardapio", "promocao", "acompanhar", "carrinho",
-     "pagamento", "consulta-pedido"];
+ const secoes = ["cardapio", "promocao", "acompanhamento", "carrinho", "pagamento", "consulta-pedido"];
   secoes.forEach((id) => {
     const el = document.getElementById(id);
     if (el) el.classList.add("hidden");
@@ -110,21 +98,12 @@ function adicionarPizza() {
   mostrarMensagem(`Pizza ${pizzaSelecionada} foi adicionada ao carrinho!`);
 }
 
-function marcarAcompanhamento(checkbox) {
-  if (checkbox.checked) {
-    carrinho.push(checkbox.value);
-  } else {
-    carrinho = carrinho.filter(item => item !== checkbox.value);
-  }
-  atualizarCarrinho();
-}
-
 function adicionarAcompanhamento() {
-    const acompanhamentoSelecionado = document.getElementById("acompanhamento").value;
-    carrinho.push(acompanhamentoSelecionado);
-    atualizarCarrinho();
-    mostrarMensagem(`Acompanhamento ${acompanhamentoSelecionado} foi adicionado ao carrinho!`);
-  }  
+  const acompanhamentoSelecionado = document.getElementById("select-acompanhamento").value;
+  carrinho.push(acompanhamentoSelecionado);
+  atualizarCarrinho();
+  mostrarMensagem(`Acompanhamento ${acompanhamentoSelecionado} foi adicionado ao carrinho!`, "sucesso");
+}
 
 function confirmarPagamento() {
   const formas = document.getElementsByName("pagamento");

@@ -10,7 +10,7 @@
 <body>
   <div class="container">
     <h1>FRANCO PIZZA'S</h1>
-    <h2>Faça login para pedir sua pizza</h2>
+    <h2>Faça login de Administrador</h2>
 
     <div class="form-group">
       <label for="usuario">Usuário:</label>
@@ -22,18 +22,18 @@
       <input type="password" id="senha" placeholder="Digite sua Senha" />
     </div>
 
+       <div class="form-group">
+      <label for="codigo">Código:</label>
+      <input type="password" id="codigo" placeholder="Digite o código de acesso" />
+    </div>
+
     <button onclick="validarLogin()">Entrar</button>
     <p id="mensagem" class="mensagem hidden"></p>
 
-    <h2>Não possui Login? Faça seu Cadastro agora mesmo</h2>
-    <button onclick="window.location.href='cadastro.html'">Cadastrar</button>
-    <h2>Quer entrar em sua conta de Administrador? Clique aqui!</h2>
-    <button onclick="window.location.href='loginadm.html'">Entrar com ADM</button>
-    
     <footer>
       <div class="logoimg"></div>
     </footer>
   </div>
-  <script src="pizzaria1.js"></script>
+  <script src="pizzaria.js"></script>
 </body>
 </html>
