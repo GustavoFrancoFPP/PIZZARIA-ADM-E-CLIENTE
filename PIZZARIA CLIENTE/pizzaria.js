@@ -52,7 +52,7 @@ function adicionarPizza() {
   const ingredientes = document.getElementById("ingredientes").value;
   const preco = parseFloat(document.getElementById("preco").value);
 
-  if (nome && ingredientes && !isNaN(preco)) {
+  if (nome && ingredientes && (preco)) {
     cardapio.push({ nome: nome, ingredientes: ingredientes, preco: preco });
     document.getElementById("nome").value = "";
     document.getElementById("ingredientes").value = "";
@@ -100,7 +100,7 @@ function alterarPizza() {
     const novosIngredientes = document.getElementById("novos-ingredientes").value;
     const novoPreco = parseFloat(document.getElementById("novo-preco").value);
 
-    if (novoNome && novosIngredientes && !isNaN(novoPreco)) {
+    if (novoNome && novosIngredientes && (novoPreco)) {
       pizzaParaAlterar.nome = novoNome;
       pizzaParaAlterar.ingredientes = novosIngredientes;
       pizzaParaAlterar.preco = novoPreco;
