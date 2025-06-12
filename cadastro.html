@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="pizzaria1.css">
+  <title>Cadastro de Usuário</title>
+</head>
+<body>
+  <div class="container">
+    <h1>FRANCO PIZZA'S</h1>
+    <h2>Não possui Login? Faça seu Cadastro agora mesmo</h2>
+    
+    <div id="formulario-cadastro">
+      <div class="form-group">
+        <label for="usuario">Usuário:</label>
+        <input type="text" id="usuario" placeholder="Digite seu Usuário" />
+      </div>
+      
+      <div class="form-group">
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome" placeholder="Digite seu Nome Completo" />
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="text" id="email" placeholder="Digite seu email" />
+      </div>
+      
+      <div class="form-group">
+        <label for="telefone">Telefone:</label>
+        <input type="number" id="telefone" placeholder="Digite seu número de telefone" />
+      </div>
+      
+      <div class="form-group">
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" placeholder="Digite sua senha" />
+      </div>
+      
+      <button onclick="fazerCadastro()">Cadastrar</button>
+      <p id="mensagem" class="mensagem hidden"></p>
+    </div>
+  </div>
+  <script src="pizzaria1.js"></script>
+</body>
+</html>
